@@ -1,0 +1,19 @@
+Attacks[edit]
+Software RNGs[edit]
+Just as with other components of a cryptosystem, a software random number generator should be designed to resist certain attacks. Some attacks possible on a RNG include (from[2]):
+
+Direct cryptanalytic attack
+when an attacker obtained part of the stream of random bits and can use this to distinguish the RNG output from a truly random stream.
+Input-based attacks
+modify the input to the RNG to attack it, for example by "flushing" existing entropy out of the system and put it into a known state.
+State compromise extension attacks
+when the internal secret state of the RNG is known at some time, use this to predict future output or to recover previous outputs. This can happen when a generator starts up and has little or no entropy (especially if the computer has just been booted and followed a very standard sequence of operations), so an attacker may be able to obtain an initial guess at the state.
+Hardware RNGs[edit]
+A number of attacks on hardware random number generators are possible, including trying to capture radio-frequency emissions from the computer (obtaining hard drive interrupt times from motor noise, for example), or trying to feed controlled signals into a supposedly random source (such as turning off the lights in a lava lamp or feeding a strong, known signal into a sound card).
+
+RNG subversion[edit]
+Subverted random numbers can be created using a cryptographically secure pseudorandom number generator with a seed value known to the attacker but concealed in the software. A relatively short, say 24 to 40 bit, portion of the seed can be truly random to prevent tell-tale repetitions, but not long enough to prevent the attacker from recovering, say, a "randomly" produced key.
+
+Random numbers typically go through several layers of hardware and software before they are used. Bits may be generated in a peripheral device, sent over a serial cable, collected in an operating system utility and retrieved by a system call. The subverted bits can be substituted at any point in this process with little likelihood of detection.
+
+A hardware circuit to produce subverted bits can be built on an integrated circuit a few millimeters square. The most sophisticated hardware random number generator can be subverted by placing such a chip anywhere upstream of where the source of randomness is digitized, say in an output driver chip or even in the cable connecting the RNG to the computer. The subversion chip can include a clock to limit the start of operation to some time after the unit is first turned on and run through acceptance tests, or it can contain a radio receiver for on/off control. It could be installed by the manufacturer at the behest of their national signals intelligence service, or added later by anyone with physical access. CPU chips with built-in hardware random number generators can be replaced by compatible chips with a subverted RNG in the chips' firmware.
